@@ -1,0 +1,15 @@
+// .star-container {
+//     overflow: hidden;
+//     cursor: pointer;
+// }
+span {
+    width: 20px;
+}
+.star-wrapper {
+    width: 75px;
+    height: 30px;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    cursor: pointer;
+}

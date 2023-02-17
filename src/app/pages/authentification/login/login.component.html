@@ -1,0 +1,116 @@
+<div class="no-scroll backgroundImag">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-between align-items-center h-100">
+            <div class="col-md-8 col-lg-8 col-xl-8">
+                <div class="icon">
+                    <img height="162px" src="assets/img/logo_armoirie.png" />
+                </div>
+                <div class="slider-logo-csp" style="font-size:30px;color:#fff;">
+                    Système de Gestion de l'Identifiant Unique du Foncier de Côte d'Ivoire
+                </div>
+                <div class="signup-step">
+                    <div class="steps">
+                        <ol class="clearfix">
+                            <li class="step">
+                                <ul>
+                                    <li>
+                                        <span style="font-size:18px;" class="icon"></span>
+                                    </li>
+                                    <li>
+                                        <!-- <p class="main-text">modules des points et données</p> -->
+                                        <p class="main-text" style="color:#FCEF3C;font-size:18px;font-weight:800;">
+                                            Création & Elimination</p>
+                                        <!--<span class="text text-white" style="font-size:14px;">modules des points sources et des données métriques à collecter.</span>-->
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="step steps-line"></li>
+                            <li class="step">
+                                <ul>
+                                    <li>
+                                        <span style="font-size:18px;" class="icon"></span>
+                                    </li>
+                                    <li>
+                                        <p class="main-text" style="color:#FCEF3C;font-size:18px;font-weight:800;">
+                                            Attribution & Association
+                                        </p>
+                                        <!--<span style="font-size:14px;" class="text text-white">Collecte des données de métriques selon les profils de supervisions.</span>-->
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="steps-line step"></li>
+                            <li class="step">
+                                <ul>
+                                    <li><span class="icon"></span></li>
+                                    <li>
+                                        <p class="main-text" style="color:#FCEF3C;font-size:18px;font-weight:800;">
+                                            Vérification & Révocation</p>
+                                        <!--<span style="font-size:14px;" class="text text-white">Traitement, Génération d'alarmes et Transmission des données.</span>-->
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="steps-line step"></li>
+                            <li class="step">
+                                <ul>
+                                    <li><span class="icon"></span></li>
+                                    <li>
+                                        <p class="main-text" style="color:#FCEF3C;font-size:18px;font-weight:800;">
+                                            Partage d'informations</p>
+                                        <!--<span style="font-size:14px;" class="text text-white">Visualisation des points sources et des données collectées ; Rapports de supervisions.</span>-->
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="steps-line step"></li>
+                            <li class="step">
+                                <ul>
+                                    <li><span class="icon"></span></li>
+                                    <li>
+                                        <p class="main-text" style="color:#FCEF3C;font-size:18px;font-weight:800;">Vue
+                                            géographique</p>
+                                        <!--<span style="font-size:14px;" class="text text-white">Visualisation des points sources et des données collectées ; Rapports de supervisions.</span>-->
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-xl-4">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <h3 class="mb-5">Authentification</h3>
+
+                        <div class="form-outline mb-4">
+                            <input type="email" id="typeEmailX-2" class="form-control" />
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="password" id="typePasswordX-2" class="form-control" />
+                        </div>
+                        <!-- DEBUT: LOGIQUE NGX-RECAPCTHA -->
+                        <div class="mb-4 d-flex justify-content-center">
+                            <form [formGroup]="aFormGroup">
+                                <ngx-recaptcha2 #captchaElem
+                                  [siteKey]="siteKey"
+                                  (success)="handleSuccess($event)"
+                                  [useGlobalDomain]="false"
+                                  required
+                                  formControlName="recaptcha">
+                                </ngx-recaptcha2>
+                              </form>
+                        </div>
+                        <!-- FIN: LOGIQUE NGX-RECAPCTHA -->
+                        <div class="form-outline mb-4">
+                            <button class="btn btn-md btn-primary" style="background-color: #3b5998; width: 100%;"
+                            type="submit" [disabled]="!this.ischecked">Connexion</button>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a class="souligne cursor link-dark" (click)="forgetPassword()">Mot de passe oublié</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

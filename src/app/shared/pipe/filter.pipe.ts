@@ -16,13 +16,13 @@ export class FilterPipe implements PipeTransform {
     return value.filter((item: any)=> {
       return JSON.stringify(item).toLocaleLowerCase().includes(filterString)
     })
-    const users = [];
-    for (const user of value) {
-      if (user['hotelName'] === filterString) {
-        users.push(user)
-      }
-    }
-    return users;
+    // const users = [];
+    // for (const user of value) {
+    //   if (user['hotelName'] === filterString) {
+    //     users.push(user)
+    //   }
+    // }
+    // return users;
   }
 
 }

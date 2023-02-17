@@ -3,5 +3,6 @@ export interface IHOTEL {
     hotelName: string,
     description: string,
     price: number,
-    imageUrl: string
+    imageUrl: string,
+    rating: number
 }
