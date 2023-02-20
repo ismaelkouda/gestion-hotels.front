@@ -80,31 +80,38 @@
                     <div class="card-body p-5 text-center">
 
                         <h3 class="mb-5">Authentification</h3>
+                        <form [formGroup]="registerForm" #formData="ngForm">
+                            <div class="form-outline mb-4">
+                                <input type="email" id="typeEmailX-2" class="form-control" name="mail"
+                                     pattern="^[a-zA-Z0-9àéèç]{1,25}$" 
+                                    formControlName="nom"/>
+                            </div>
+                            <div
+                                *ngIf="registerForm.get('email').invalid && (registerForm.get('email').touched || registerForm.get('email').dirty)">
+                                <div *ngIf="registerForm.get('email').hasError('required')" style="color: red;">
+                                    Le champ adresse email est requis
+                                </div>
+                            </div>
 
-                        <div class="form-outline mb-4">
-                            <input type="email" id="typeEmailX-2" class="form-control" />
-                        </div>
+                            <div class="form-outline mb-4">
+                                <input type="password" id="typePasswordX-2" class="form-control" name="motdepass"
+                                    [(ngModel)]="password" #motdepass="ngModel" pattern="" />
+                            </div>
+                            <!-- DEBUT: LOGIQUE NGX-RECAPCTHA -->
+                            <div class="mb-4 d-flex justify-content-center">
+                                <form [formGroup]="aFormGroup">
+                                    <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" (success)="handleSuccess($event)"
+                                        [useGlobalDomain]="false" required formControlName="recaptcha">
+                                    </ngx-recaptcha2>
+                                </form>
+                            </div>
+                            <!-- FIN: LOGIQUE NGX-RECAPCTHA -->
+                            <div class="form-outline mb-4">
+                                <button class="btn btn-md btn-primary" style="background-color: #3b5998; width: 100%;"
+                                    type="submit" [disabled]="!ischecked || !formData.form.valid">Connexion</button>
+                            </div>
+                        </form>
 
-                        <div class="form-outline mb-4">
-                            <input type="password" id="typePasswordX-2" class="form-control" />
-                        </div>
-                        <!-- DEBUT: LOGIQUE NGX-RECAPCTHA -->
-                        <div class="mb-4 d-flex justify-content-center">
-                            <form [formGroup]="aFormGroup">
-                                <ngx-recaptcha2 #captchaElem
-                                  [siteKey]="siteKey"
-                                  (success)="handleSuccess($event)"
-                                  [useGlobalDomain]="false"
-                                  required
-                                  formControlName="recaptcha">
-                                </ngx-recaptcha2>
-                              </form>
-                        </div>
-                        <!-- FIN: LOGIQUE NGX-RECAPCTHA -->
-                        <div class="form-outline mb-4">
-                            <button class="btn btn-md btn-primary" style="background-color: #3b5998; width: 100%;"
-                            type="submit" [disabled]="!this.ischecked">Connexion</button>
-                        </div>
                         <div class="d-flex justify-content-center">
                             <a class="souligne cursor link-dark" (click)="forgetPassword()">Mot de passe oublié</a>
                         </div>

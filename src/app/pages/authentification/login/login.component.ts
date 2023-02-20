@@ -9,12 +9,16 @@ import Swal from 'sweetalert2'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  // DEBUT: LOGIQUE NGX-RECAPCTHA V2
+  // LOGIQUE NGX-RECAPCTHA V2
   aFormGroup: FormGroup;
   siteKey: string= ''
   ischecked: boolean = false;
+  // NGMODEL INPUT
+  registerForm: FormGroup;
+  password: string
+  email: string
   constructor(private formBuilder: FormBuilder) { }
-  // FIN: LOGIQUE NGX-RECAPCTHA V2
+  
   ngOnInit(): void {
     // DEBUT: LOGIQUE NGX-RECAPCTHA V2
     this.aFormGroup = this.formBuilder.group({
@@ -27,17 +31,22 @@ export class LoginComponent implements OnInit {
   handleSuccess(event: any){
     this.ischecked = true;
   }
-  
+  // onSubmit() {
+  //   alert("hello")
+  // }
   forgetPassword() {
     Swal.fire({
-      title: 'Submit your Github username',
+      title: 'Entrez votre adresse email',
       input: 'text',
       inputAttributes: {
-        autocapitalize: 'off'
+        autocapitalize: 'off',
+        placeholder: 'Ex: ismaelkouda00@gmail.com'
       },
       showCancelButton: true,
-      confirmButtonText: 'Look up',
+      confirmButtonText: 'Enregistrer',
+      cancelButtonText: 'Annuler',
       showLoaderOnConfirm: true,
+      allowOutsideClick: false,
       preConfirm: (login) => {
         return fetch(`//api.github.com/users/${login}`)
           .then(response => {
@@ -52,7 +61,7 @@ export class LoginComponent implements OnInit {
             )
           })
       },
-      allowOutsideClick: () => !Swal.isLoading()
+      // allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
